@@ -1,7 +1,22 @@
+import { useEffect, useState } from 'react';
+import { getFiveDaysWeather } from './lib/weather-api';
+
 // components
 import Form from './components/Form';
+import { Weather } from './interfaces/weather';
 
 function App() {
+  const [weather, setWeather] = useState<Weather | null>(null);
+  const [city, setCity] = useState<string>('New York');
+
+  useEffect((): void => {
+    async function getWeather() {
+      const result = await getFiveDaysWeather(city);
+      setWeather(result);
+    }
+    getWeather();
+  }, [city]);
+
   return (
     <div
       style={{
@@ -10,7 +25,7 @@ function App() {
       }}
       className="flex flex-col items-center justify-center min-h-screen bg-cover bg-center bg-no-repeat"
     >
-      <Form />
+      <Form setCity={setCity} />
     </div>
   );
 }

@@ -1,10 +1,10 @@
 @tailwind base;
 @tailwind components;
 
-.glass-box {
+.box {
   @apply relative;
   @apply bg-white;
-  @apply w-full max-w-2xl;
+  @apply w-full max-w-xl;
   @apply px-8 py-6;
   @apply rounded shadow;
 }

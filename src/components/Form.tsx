@@ -1,6 +1,10 @@
 import { useState } from 'react';
 
-const Form = () => {
+export type FormProps = {
+  setCity: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const Form = ({ setCity }: FormProps) => {
   const [location, setLocation] = useState<string>('');
   const [error, setError] = useState<string | null>(null);
   // handle input data
@@ -21,11 +25,12 @@ const Form = () => {
     // clear the previous error
     setError(null);
 
-    console.log(location);
+    // send values to the parent component
+    setCity(location);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="glass-box">
+    <form onSubmit={handleSubmit} className="box">
       <div className="flex items-center w-full space-x-2">
         <div className="w-full">
           <input
