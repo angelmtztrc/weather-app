@@ -8,7 +8,7 @@ interface WeatherStatus {
 export interface Weather {
   name: string;
   main: {
-    humedity: number;
+    humidity: number;
     feels_like: number;
     temp: number;
     temp_max: number;
